@@ -1,0 +1,65 @@
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import { resolve } from "path";
+import { pluginsConfig, resolveConfig } from "./scripts/preview";
+import Inspect from "vite-plugin-inspect";
+import dts from "vite-plugin-dts";
+export default defineConfig(() => {
+    return {
+        build: {
+            outDir: "build",
+            cssCodeSplit: true,
+            rollupOptions: {
+                external: ["@ant-design/icons-vue", "ant-design-vue", "element-plus", "unplugin-vue-components", "unplugin-auto-import", "vue"],
+                output: [
+                    {
+                        format: "es",
+                        entryFileNames: "[name].js",
+                        exports: "named",
+                        name: "JbDesign",
+                        dir: "./build/dist",
+                    },
+                    {
+                        format: "es",
+                        entryFileNames: "[name].js",
+                        exports: "named",
+                        preserveModules: true,
+                        preserveModulesRoot: "packages",
+                        dir: "./build/es",
+                    },
+                    {
+                        format: "cjs",
+                        entryFileNames: "[name].js",
+                        exports: "named",
+                        preserveModules: true,
+                        preserveModulesRoot: "packages",
+                        dir: "./build/lib",
+                    },
+                ],
+            },
+            lib: {
+                entry: resolve(__dirname, "./packages/index.ts"),
+                name: "JbDesign",
+                fileName: (format) => `Wy-design.${format}.js`,
+                formats: ["es", "cjs"],
+            },
+        },
+        plugins: [
+            vue(),
+            dts({
+                tsconfigPath: "./tsconfig.prod.json",
+                outDir: "build/lib",
+            }),
+            dts({
+                tsconfigPath: "./tsconfig.prod.json",
+                outDir: "build/es",
+            }),
+            ...pluginsConfig,
+            // Inspect({
+            //     build: true,
+            //     outputDir: ".vite-inspect",
+            // }),
+        ],
+        resolve: resolveConfig,
+    };
+});

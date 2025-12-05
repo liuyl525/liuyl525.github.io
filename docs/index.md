@@ -2,9 +2,9 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 hero:
-    name: "赵英杰"
+    name: "赵英杰重生写前端"
     text: "组件库"
-    tagline: 基于 VUE3 + Vite的组件库。
+    tagline: 基于 VUE3 + Vite 的组件库。
     actions:
         - theme: brand
           text: 指南
