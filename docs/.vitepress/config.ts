@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 import { resolveConfig, pluginsConfig } from "../../scripts/preview.ts";
 
 export default defineConfig({
-    title: "Zyj-design",
+    title: "Wy-design",
     description: "组件库",
     base: "/",
     vite: {
@@ -56,6 +56,6 @@ export default defineConfig({
                 },
             ],
         },
-        socialLinks: [{ icon: "github", link: "https://github.com/liuyl525/liuyl525.github.io" }],
+        socialLinks: [{ icon: "github", link: "https://github.com/wuyongGitHub/wuyongGitHub.github.io" }],
     },
 });
