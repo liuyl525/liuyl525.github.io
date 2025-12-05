@@ -1,3 +1,9 @@
+/*
+ * @Author: wyk
+ * @Date: 2022-11-22 10:22:48
+ * @LastEditTime: 2024-08-30 17:19:06
+ * @Description:
+ */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { resolve } from "path";
